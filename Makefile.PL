@@ -11,3 +11,4 @@ WriteMakefile(
       (ABSTRACT_FROM => 'Tied.pm', # retrieve abstract from module
        AUTHOR     => 'Steffen Mueller <page-module@steffen-mueller.net>') : ()),
 );
+

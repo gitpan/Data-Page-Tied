@@ -14,9 +14,9 @@ my $name;
 
 foreach my $line (<DATA>) {
   chomp $line;
-  next unless $line;
+  next if $line =~ /^\s*$/;
 
-  if ($line =~ /^# ?(.+)/) {
+  if ($line =~ /^\s*# ?(.+)/) {
       $name = $1;
       next;
     }
@@ -140,6 +140,7 @@ __DATA__
 23 10 1    1 3 1 10	1 2
 23 10 2    1 3 11 20	1 2
 23 10 3    1 3 21 23	1 2
+
 
 
 

@@ -1,12 +1,12 @@
-# 
-# Copyright (c) 2002
-#          Steffen Müller         <page-module@steffen-mueller.net>
 # 
-# All rights reserved.
-# 
-# This program is free software; you can redistribute it and/or
-# modify it under the same terms as Perl itself.
-# 
+# Copyright (c) 2002
+#          Steffen Müller         <page-module@steffen-mueller.net>
+# 
+# All rights reserved.
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the same terms as Perl itself.
+# 
 
 package Data::Page::Tied;
 
@@ -16,7 +16,7 @@ use Carp;
 use Data::Page;
 
 use vars qw/$VERSION @ISA/;
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 # inherit methods from Data::Page.
 push @ISA, 'Data::Page';
@@ -70,7 +70,7 @@ sub set_current_page {
 sub set_entries_per_page {
   my $self = shift;
   $self->{ENTRIES_PER_PAGE} = shift;
-  croak("Fewer than one entry per page!") if $self->entries_per_page < 1;
+  croak("Less than one entry per page: " . $self->{ENTRIES_PER_PAGE}) if $self->entries_per_page < 1;
   return $self->{ENTRIES_PER_PAGE};
 }
 
@@ -248,3 +248,4 @@ under the same terms as Perl itself.
 L<Data::Page>
 
 =cut
+

@@ -16,7 +16,7 @@ use Carp;
 use Data::Page;
 
 use vars qw/$VERSION @ISA/;
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 # inherit methods from Data::Page.
 push @ISA, 'Data::Page';
@@ -238,7 +238,7 @@ Steffen Mueller, <page-module@steffen-mueller.net>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2000-1, Steffen Mueller
+Copyright (C) 2002, Steffen Mueller
 
 This module is free software; you can redistribute it or modify it
 under the same terms as Perl itself. 

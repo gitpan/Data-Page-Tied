@@ -1,4 +1,8 @@
 Revision history for Perl extension Data::Page::Tied.
 
+0.02  Fri Jul 12 11:36:48 2002
+	- Minor documentation fixes
+	- Included HTML documentation
+
 0.01  Thu Jul 11 14:56:48 2002
 	- original version as uploaded to CPAN

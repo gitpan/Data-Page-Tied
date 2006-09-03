@@ -1,8 +1,9 @@
 Changes
+lib/Data/Page/Tied.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
+META.yml
 README
-test.pl
-Tied.pm
-Tied.html
-
+t/00pod.t
+t/00podcover.t
+t/01basic.t

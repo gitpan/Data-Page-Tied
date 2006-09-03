@@ -16,7 +16,7 @@ use Carp;
 use Data::Page;
 
 use vars qw/$VERSION @ISA/;
-$VERSION = '0.03';
+$VERSION = '2.00';
 
 # inherit methods from Data::Page.
 push @ISA, 'Data::Page';
@@ -30,14 +30,12 @@ sub new {
   # get the data to start with
   my $entries               = shift;
 
-  # if it's an array ref, we use its contents
   if (ref $entries eq 'ARRAY') {
-    $self->{ENTRIES}        = [];
-    @{ $self->{ENTRIES} }   = @{ $entries };
-
-  # if it's not an array ref, we return a Data::Page object
+    # if it's an array ref, we use its contents
+    $self->{ENTRIES}   = [ @{ $entries } ];
   } else {
-    return Data::Page::new('Data::Page', $entries, @_);
+    # if it's not an array ref, we return a Data::Page object
+    return Data::Page->new($entries, @_);
   }
 
   bless($self, $class);
@@ -58,20 +56,14 @@ sub total_entries {
 
 # set the current page.
 sub set_current_page {
-  my $self = shift;
-  $self->{CURRENT_PAGE} = shift;
-  $self->{CURRENT_PAGE} = $self->first_page unless defined $self->current_page;
-  $self->{CURRENT_PAGE} = $self->first_page if $self->current_page < $self->first_page;
-  $self->{CURRENT_PAGE} = $self->last_page if $self->current_page > $self->last_page;
-  return $self->{CURRENT_PAGE};
+  my $o = shift()->current_page(@_);
+  $o->current_page();
 }
 
 # set entries per page
 sub set_entries_per_page {
-  my $self = shift;
-  $self->{ENTRIES_PER_PAGE} = shift;
-  croak("Less than one entry per page: " . $self->{ENTRIES_PER_PAGE}) if $self->entries_per_page < 1;
-  return $self->{ENTRIES_PER_PAGE};
+  my $o = shift()->entries_per_page( @_ );
+  return $o->entries_per_page;    
 }
 
 # access an entry
@@ -238,7 +230,7 @@ Steffen Mueller, <page-module@steffen-mueller.net>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2002, Steffen Mueller
+Copyright (C) 2002, 2006 Steffen Mueller
 
 This module is free software; you can redistribute it or modify it
 under the same terms as Perl itself. 

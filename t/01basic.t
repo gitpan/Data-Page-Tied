@@ -6,9 +6,8 @@
 use warnings; # always
 use strict;   # always
 
-use Test::Simple tests => 553;
-use Data::Page::Tied;
-ok(1, "Loaded module"); # If we made it this far, we're ok.
+use Test::More tests => 553;
+use_ok( 'Data::Page::Tied' );
 
 my $name;
 
@@ -34,15 +33,15 @@ foreach my $line (<DATA>) {
 #  warn "First entry on page: ", $page->first, "\n";
 #  warn " Last entry on page: ", $page->last, "\n";
 
-  ok($vals[3] == $page->first_page, "$name: page, first page");
-  ok($vals[4] == $page->last_page, "$name: page, last page");
-  ok($vals[5] == $page->first, "$name: page, first");
-  ok($vals[6] == $page->last, "$name: page, last");
+  is($page->first_page, $vals[3], "$name: page, first page");
+  is($page->last_page, $vals[4], "$name: page, last page");
+  is($page->first, $vals[5], "$name: page, first");
+  is($page->last, $vals[6], "$name: page, last");
 
-  ok($vals[3] == $tied->first_page, "$name: tied, first page");
-  ok($vals[4] == $tied->last_page, "$name: tied, last page");
-  ok($vals[5] == $tied->first, "$name: tied, first");
-  ok($vals[6] == $tied->last, "$name: tied, last");
+  is($tied->first_page, $vals[3], "$name: tied, first page");
+  is($tied->last_page, $vals[4], "$name: tied, last page");use Data::Dumper;
+  is($tied->first, $vals[5], "$name: tied, first".Dumper($tied));
+  is($tied->last, $vals[6], "$name: tied, last");
 
   ok(
     ($vals[8] eq 'undef') ?
@@ -57,7 +56,7 @@ foreach my $line (<DATA>) {
     "$name: tied, set_entry, $vals[7], $vals[8]"
   );
 
-  ok(scalar @ary == $vals[0], "$name: tied ary, scalar context");
+  is(scalar(@ary), $vals[0], "$name: tied ary, scalar context");
 
   ok(
     ($vals[8] eq 'undef') ?
@@ -79,21 +78,21 @@ foreach my $line (<DATA>) {
   );
 
   ok($#ary = $vals[0] + 1, "$name: tied ary, storesize");
-  ok($handler->total_entries() == $vals[0] + 2, "$name: tied ary handler, total_entries");
+  is($handler->total_entries(), $vals[0] + 2, "$name: tied ary handler, total_entries");
 
 }
 
 my $tied = Data::Page::Tied->new(['a' .. 'z'], 10, 1);
 
-ok($tied->set_entries_per_page(5) == 5, 'set_entries_per_page(5)');
-ok($tied->entries_per_page() == 5, 'entries_per_page()');
-ok($tied->set_entries_per_page(2) == 2, 'set_entries_per_page(2)');
-ok($tied->entries_per_page() == 2, 'entries_per_page()');
+is($tied->set_entries_per_page(5), 5, 'set_entries_per_page(5)');
+is($tied->entries_per_page(), 5, 'entries_per_page()');
+is($tied->set_entries_per_page(2), 2, 'set_entries_per_page(2)');
+is($tied->entries_per_page(), 2, 'entries_per_page()');
 
-ok($tied->set_current_page(5) == 5, 'set_current_page(5)');
-ok($tied->current_page() == 5, 'current_page()');
-ok($tied->set_current_page(2) == 2, 'set_current_page(2)');
-ok($tied->current_page() == 2, 'current_page()');
+is($tied->set_current_page(5), 5, 'set_current_page(5)');
+is($tied->current_page(), 5, 'current_page()');
+is($tied->set_current_page(2), 2, 'set_current_page(2)');
+is($tied->current_page(), 2, 'current_page()');
 
 
 __DATA__

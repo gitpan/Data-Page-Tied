@@ -1,23 +1,6 @@
-Data::Page::Tied
-================
-
 NAME
     Data::Page::Tied - Tied interface for the Data::Page module
 
-INSTALLATION
-    To install this module type the following:
-    
-       perl Makefile.PL
-       make
-       make test
-       make install
-    
-DEPENDENCIES
-    This module requires these other modules and libraries:
-    
-      Test::Simple
-      Data::Page
-    
 SYNOPSIS
       use Data::Page::Tied;
       $handler = tie @data,
@@ -30,14 +13,17 @@ SYNOPSIS
       print "first entry on page ", $handler->current_page(),
             " is ",                 $handler->first();
 
+DEPENDENCIES
+    This module depends on "Data::Page" and "Test::Simple".
+
 DESCRIPTION
     The "Data::Page::Tied" module adds a tied interface to the
     object-oriented interface defined by Leon Brocard's "Data::Page" module.
     It also adds several methods to set and get the current page and the
     number of data items per page.
 
-    Please read the Data::Page manpage as "Data::Page::Tied" inherits all
-    methods from "Data::Page".
+    Please read Data::Page as "Data::Page::Tied" inherits all methods from
+    "Data::Page".
 
     The tying constructor has the following syntax:
 
@@ -49,7 +35,6 @@ DESCRIPTION
     respectively.
 
   Methods
-
     new This is the constructor. It is invoked by the tied interface, but
         using it directly allows for two distinct ways of creating new
         objects:
@@ -78,22 +63,21 @@ DESCRIPTION
         This accessor is used to get or set any specific entry. It takes one
         or two arguments. The first argument is always the array index and
         the second (optional) argument is the value you want to set
-        "$array[$index]" to.
+        $array[$index] to.
 
     set_entry
         Additional method to make the interface more consistent. Takes two
-        arguments. See the entry manpage.
+        arguments. See entry.
 
 AUTHOR
-    Steffen Mueller, <page-module@steffen-mueller.net>
+    Steffen Mueller, <smueller@cpan.org>
 
-COPYRIGHT
-    Copyright (C) 2000-1, Steffen Mueller
+COPYRIGHT AND LICENSE
+    Copyright (C) 2002-2006 Steffen Mueller
 
     This module is free software; you can redistribute it or modify it under
     the same terms as Perl itself.
 
 SEE ALSO
-    the Data::Page manpage
-
+    Data::Page
 

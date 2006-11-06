@@ -1,6 +1,6 @@
 # 
-# Copyright (c) 2002
-#          Steffen Müller         <page-module@steffen-mueller.net>
+# Copyright (c) 2002-2006
+#          Steffen Müller         <smueller@cpan.org>
 # 
 # All rights reserved.
 # 
@@ -16,7 +16,7 @@ use Carp;
 use Data::Page;
 
 use vars qw/$VERSION @ISA/;
-$VERSION = '2.00';
+$VERSION = '2.01';
 
 # inherit methods from Data::Page.
 push @ISA, 'Data::Page';
@@ -226,11 +226,11 @@ two arguments. See L<entry>.
 
 =head1 AUTHOR
 
-Steffen Mueller, <page-module@steffen-mueller.net>
+Steffen Mueller, E<lt>smueller@cpan.orgE<gt>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2002, 2006 Steffen Mueller
+Copyright (C) 2002-2006 Steffen Mueller
 
 This module is free software; you can redistribute it or modify it
 under the same terms as Perl itself. 
